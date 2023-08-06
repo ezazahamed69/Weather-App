@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     let srch_bar = document.querySelector(".search input")
-    srch_bar.value = "Peshawar"
+    srch_bar.value = "Dhaka"
 
     let temp = document.getElementById("temp")
     temp.style.fontSize = "4rem"
