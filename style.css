@@ -20,6 +20,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
+/* Style the navigation bar */
 .nav-bar {
     margin-top: 20px;
     align-items: center;
@@ -28,24 +29,46 @@ body {
     justify-content: space-around;
 }
 
+/* Style the navigation links */
 .nav-bar a {
     margin: 0 15px;
     color: white;
     text-decoration: none;
-    font-family: lato;
-    font-size: 1rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    transition: 0.3s;
+    font-size: 1rem;
+    transition: color 0.3s, transform 0.2s ease-out;
+    position: relative;
 }
 
 .nav-bar a:first-child {
     color: var(--blue-lighter);
 }
 
+/* Add a subtle bottom border on hover */
 .nav-bar a:hover {
     color: var(--blue-lighter);
+    transform: translateY(-3px);
 }
 
+/* Add an underline animation on hover */
+.nav-bar a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--blue-light);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-bar a:hover::before {
+    transform: scaleX(1);
+}
+
+/* Style the navigation label */
 .nav-bar label {
     color: white;
     font-family: prompt;
@@ -129,7 +152,6 @@ hr {
 
             align-items: center;
             padding: 10px;
-            /* background-color: rgba(255, 255, 255, 0.8); */
             background-color: transparent;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(189, 167, 167, 0.1);
@@ -145,7 +167,6 @@ hr {
         .search-bar button {
             padding: 8px 15px 10px;
             border: none;
-            /* background-color: var(--blue-lighter); */
             background-color: transparent;
             color: #fff;
             border-radius: 0 5px 5px 0;
@@ -155,4 +176,12 @@ hr {
 
         .search-bar button:hover {
             background-color: var(--blue-dark);
-        }
+            font-size: medium;
+            animation: flipInY 1s;
+            
+
+            
+   
+        } 
+
+
