@@ -1,22 +1,25 @@
+ const apiKey = 'c36c3d4f715e64907aba33fa659344e5';
 
-        const apiKey = 'c36c3d4f715e64907aba33fa659344e5';
+// Call weatherApi() on page load to fetch weather data for the default city
+window.onload = function() {
+    weatherApi();
+};
 
-        function weatherApi() {
-            const cityInput = document.getElementById('cityInput').value;
-            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&units=metric&appid=${apiKey}`;
+function weatherApi() {
+    const cityInput = document.getElementById('cityInput').value || 'Dhaka'; // Set default value to 'Dhaka'
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&units=metric&appid=${apiKey}`;
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => displayWeather(data))
-                .catch(error => console.log('Error:', error));
-        }
-
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => displayWeather(data))
+        .catch(error => console.log('Error:', error));
+}
         function displayWeather(data) {
             const weatherInfoDiv = document.getElementById('weatherInfo');
             weatherInfoDiv.innerHTML = '';
 
             if (data.cod !== '200') {
-                weatherInfoDiv.innerHTML = '<p>Error: City not found</p>';
+                weatherInfoDiv.innerHTML = '<p>Error: Not found</p>';
                 return;
             }
 
@@ -28,7 +31,7 @@
 
             forecastsFor6AM.forEach(forecast => {
                 const dateContainer = document.createElement('div');
-                dateContainer.classList.add('date-container');
+                dateContainer.classList.add('fetchDate-container');
 
                 const dateTime = new Date(forecast.dt_txt);
                 const day = Week(dateTime.getDay());
